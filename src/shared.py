@@ -23,7 +23,7 @@ import os
 import sys
 from codecs import open as codecopen
 from unicodedata import normalize
-from PyQt4.QtCore import qWarning, SIGNAL, SLOT
+from PyQt4.QtCore import qWarning, SIGNAL, SLOT, qDir
 from PyQt4.QtGui import QApplication, QFileDialog, QIcon, QMessageBox
 
 # ------------------------------------------------------------------------------------------------------------
@@ -93,16 +93,16 @@ else:
     envTMP = os.getenv("TMPDIR")
 
 if envTMP is None:
-    qWarning("TMP/TMPDIR variable not set, using Qt TempLocation")
-    TMP = writableLocation(TempLocation)
+    qWarning("TMP(DIR) variable not set, using Qt.tempPath")
+    TMP = QDir.tempPath()
 else:
     TMP = envTMP
 
 del envTMP
 
 if not os.path.exists(TMP):
-    qWarning("TMP/TMPDIR does not exist, using Qt TempLocation")
-    TMP = writableLocation(TempLocation)
+    qWarning("TMP(DIR) does not exist, using Qt.tempPath")
+    TMP = QDir.tempPath()
 
 # ------------------------------------------------------------------------------------------------------------
 # Set HOME
