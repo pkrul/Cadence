@@ -84,7 +84,7 @@ global gGui
 gGui = None
 
 # ------------------------------------------------------------------------------------------------------------
-# Set TMP
+# Space for temporary files
 
 TMP = os.getenv("TMP")
 
@@ -93,7 +93,11 @@ if TMP is None:
         qWarning("TMP variable not set")
         TMP = os.path.join(WINDIR, "temp")
     else:
-        TMP = "/tmp"
+        # POSIX.1-2008 Linux, Mac OS X, BSD, ..
+        TMP = os.getenv("TMPDIR")
+        if TMP is None:
+            qWarning("TMPDIR variable not set")
+            TMP = "/tmp"
 
 # ------------------------------------------------------------------------------------------------------------
 # Set HOME
@@ -127,6 +131,46 @@ if PATH is None:
 
 else:
     PATH = PATH.split(os.pathsep)
+
+# ------------------------------------------------------------------------------------------------------------
+# User environment LADSPA plugin paths
+
+ENV_LADSPA_PATH = os.getenv("LADSPA_PATH")
+
+if ENV_LADSPA_PATH is None:
+    qWarning("LADSPA_PATH not set, using default.")
+else:
+    ENV_LADSPA_PATH = ENV_LADSPA_PATH.split(os.pathsep)
+
+# ------------------------------------------------------------------------------------------------------------
+# User environment DSSI plugin paths
+
+ENV_DSSI_PATH = os.getenv("DSSI_PATH")
+
+if ENV_DSSI_PATH is None:
+    qWarning("DSSI_PATH not set, using default.")
+else:
+    ENV_DSSI_PATH = ENV_DSSI_PATH.split(os.pathsep)
+
+# ------------------------------------------------------------------------------------------------------------
+# User environment LV2 plugin paths
+
+ENV_LV2_PATH = os.getenv("LV2_PATH")
+
+if ENV_LV2_PATH is None:
+    qWarning("LV2_PATH not set, using default.")
+else:
+    ENV_LV2_PATH = ENV_LV2_PATH.split(os.pathsep)
+
+# ------------------------------------------------------------------------------------------------------------
+# User environment VST plugin paths
+
+ENV_VST_PATH = os.getenv("VST_PATH")
+
+if ENV_VST_PATH is None:
+    qWarning("VST_PATH not set, using default.")
+else:
+    ENV_VST_PATH = ENV_VST_PATH.split(os.pathsep)
 
 # ------------------------------------------------------------------------------------------------------------
 # Remove/convert non-ascii chars from a string

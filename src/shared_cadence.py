@@ -30,29 +30,41 @@ from shared import *
 # ------------------------------------------------------------------------------------------------------------
 # Default Plugin PATHs
 
-DEFAULT_LADSPA_PATH = [
-    os.path.join(HOME, ".ladspa"),
-    os.path.join("/", "usr", "lib", "ladspa"),
-    os.path.join("/", "usr", "local", "lib", "ladspa")
-]
+if ENV_LADSPA_PATH is None:
+    DEFAULT_LADSPA_PATH = [
+        os.path.join(HOME, ".ladspa"),
+        os.path.join("/", "usr", "lib", "ladspa"),
+        os.path.join("/", "usr", "local", "lib", "ladspa")
+    ]
+else:
+    DEFAULT_LADSPA_PATH = ENV_LADSPA_PATH
 
-DEFAULT_DSSI_PATH = [
-    os.path.join(HOME, ".dssi"),
-    os.path.join("/", "usr", "lib", "dssi"),
-    os.path.join("/", "usr", "local", "lib", "dssi")
-]
-
-DEFAULT_LV2_PATH = [
-    os.path.join(HOME, ".lv2"),
-    os.path.join("/", "usr", "lib", "lv2"),
-    os.path.join("/", "usr", "local", "lib", "lv2")
-]
-
-DEFAULT_VST_PATH = [
-    os.path.join(HOME, ".vst"),
-    os.path.join("/", "usr", "lib", "vst"),
-    os.path.join("/", "usr", "local", "lib", "vst")
-]
+if ENV_DSSI_PATH is None:
+    DEFAULT_DSSI_PATH = [
+        os.path.join(HOME, ".dssi"),
+        os.path.join("/", "usr", "lib", "dssi"),
+        os.path.join("/", "usr", "local", "lib", "dssi")
+    ]
+else:
+    DEFAULT_DSSI_PATH = ENV_DSSI_PATH
+    
+if ENV_LV2_PATH is None:
+    DEFAULT_LV2_PATH = [
+        os.path.join(HOME, ".lv2"),
+        os.path.join("/", "usr", "lib", "lv2"),
+        os.path.join("/", "usr", "local", "lib", "lv2")
+    ]
+else:
+    DEFAULT_LV2_PATH = ENV_LV2_PATH
+    
+if ENV_VST_PATH is None:
+    DEFAULT_VST_PATH = [
+        os.path.join(HOME, ".vst"),
+        os.path.join("/", "usr", "lib", "vst"),
+        os.path.join("/", "usr", "local", "lib", "vst")
+    ]
+else:
+    DEFAULT_VST_PATH = ENV_VST_PATH
 
 # ------------------------------------------------------------------------------------------------------------
 # ALSA file-type indexes
