@@ -84,20 +84,25 @@ global gGui
 gGui = None
 
 # ------------------------------------------------------------------------------------------------------------
-# Space for temporary files
+# Set directory for temporary files
 
-TMP = os.getenv("TMP")
+if WINDOWS:
+    envTMP = os.getenv("TMP")
+else:
+    # POSIX.1-2008: Linux, Mac OS X, BSD, ..
+    envTMP = os.getenv("TMPDIR")
 
-if TMP is None:
-    if WINDOWS:
-        qWarning("TMP variable not set")
-        TMP = os.path.join(WINDIR, "temp")
-    else:
-        # POSIX.1-2008 Linux, Mac OS X, BSD, ..
-        TMP = os.getenv("TMPDIR")
-        if TMP is None:
-            qWarning("TMPDIR variable not set")
-            TMP = "/tmp"
+if envTMP is None:
+    qWarning("TMP/TMPDIR variable not set, using Qt TempLocation")
+    TMP = writableLocation(TempLocation)
+else:
+    TMP = envTMP
+
+del envTMP
+
+if not os.path.exists(TMP):
+    qWarning("TMP/TMPDIR does not exist, using Qt TempLocation")
+    TMP = writableLocation(TempLocation)
 
 # ------------------------------------------------------------------------------------------------------------
 # Set HOME
