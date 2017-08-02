@@ -1803,6 +1803,126 @@
                  </item>
                 </layout>
                </widget>
+               <widget class="QWidget" name="page_vst3">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>94</width>
+                  <height>66</height>
+                 </rect>
+                </property>
+                <attribute name="label">
+                 <string>VST3</string>
+                </attribute>
+                <layout class="QVBoxLayout" name="verticalLayout_15">
+                 <property name="leftMargin">
+                  <number>2</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>2</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>2</number>
+                 </property>
+                 <item>
+                  <widget class="QListWidget" name="list_VST3"/>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="page_gig">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>94</width>
+                  <height>66</height>
+                 </rect>
+                </property>
+                <attribute name="label">
+                 <string>GIG</string>
+                </attribute>
+                <layout class="QVBoxLayout" name="verticalLayout_16">
+                 <property name="leftMargin">
+                  <number>2</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>2</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>2</number>
+                 </property>
+                 <item>
+                  <widget class="QListWidget" name="list_GIG"/>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="page_sf2">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>94</width>
+                  <height>66</height>
+                 </rect>
+                </property>
+                <attribute name="label">
+                 <string>SF2</string>
+                </attribute>
+                <layout class="QVBoxLayout" name="verticalLayout_17">
+                 <property name="leftMargin">
+                  <number>2</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>2</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>2</number>
+                 </property>
+                 <item>
+                  <widget class="QListWidget" name="list_SF2"/>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="page_sfz">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>94</width>
+                  <height>66</height>
+                 </rect>
+                </property>
+                <attribute name="label">
+                 <string>SFZ</string>
+                </attribute>
+                <layout class="QVBoxLayout" name="verticalLayout_18">
+                 <property name="leftMargin">
+                  <number>2</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>2</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>2</number>
+                 </property>
+                 <item>
+                  <widget class="QListWidget" name="list_SFZ"/>
+                 </item>
+                </layout>
+               </widget>
               </widget>
              </item>
              <item row="0" column="1">

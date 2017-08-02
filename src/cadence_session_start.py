@@ -287,11 +287,11 @@ if __name__ == '__main__':
         elif arg == "--printVST3_PATH":
             printVST3_PATH()
         elif arg == "--printGIG_PATH":
-            printSF2_PATH()
+            printGIG_PATH()
         elif arg == "--printSF2_PATH":
-            printSFZ_PATH()
+            printSF2_PATH()
         elif arg == "--printSFZ_PATH":
-            printVST_PATH()
+            printSFZ_PATH()
         elif arg == "--reset":
             forceReset()
         elif arg in ("--system-start", "--system-start-desktop"):
