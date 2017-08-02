@@ -909,10 +909,26 @@ class CadenceMainW(QMainWindow, ui_cadence.Ui_CadenceMainW):
         for iPath in DEFAULT_VST_PATH:
             self.list_VST.addItem(iPath)
 
+        for iPath in DEFAULT_VST3_PATH:
+            self.list_VST3.addItem(iPath)
+
+        for iPath in DEFAULT_GIG_PATH:
+            self.list_GIG.addItem(iPath)
+
+        for iPath in DEFAULT_SF2_PATH:
+            self.list_SF2.addItem(iPath)
+
+        for iPath in DEFAULT_SFZ_PATH:
+            self.list_SFZ.addItem(iPath)
+
         EXTRA_LADSPA_DIRS = GlobalSettings.value("AudioPlugins/EXTRA_LADSPA_PATH", "", type=str)
         EXTRA_DSSI_DIRS = GlobalSettings.value("AudioPlugins/EXTRA_DSSI_PATH", "", type=str)
         EXTRA_LV2_DIRS = GlobalSettings.value("AudioPlugins/EXTRA_LV2_PATH", "", type=str)
         EXTRA_VST_DIRS = GlobalSettings.value("AudioPlugins/EXTRA_VST_PATH", "", type=str)
+        EXTRA_VST3_DIRS = GlobalSettings.value("AudioPlugins/EXTRA_VST3_PATH", "", type=str)
+        EXTRA_GIG_DIRS = GlobalSettings.value("AudioPlugins/EXTRA_GIG_PATH", "", type=str)
+        EXTRA_SF2_DIRS = GlobalSettings.value("AudioPlugins/EXTRA_SF2_PATH", "", type=str)
+        EXTRA_SFZ_DIRS = GlobalSettings.value("AudioPlugins/EXTRA_SFZ_PATH", "", type=str)
 
         for iPath in EXTRA_LADSPA_DIRS.split(":"):
             if os.path.exists(iPath):
@@ -930,15 +946,39 @@ class CadenceMainW(QMainWindow, ui_cadence.Ui_CadenceMainW):
             if os.path.exists(iPath):
                 self.list_VST.addItem(iPath)
 
+        for iPath in EXTRA_VST3_DIRS.split(":"):
+            if os.path.exists(iPath):
+                self.list_VST3.addItem(iPath)
+
+        for iPath in EXTRA_GIG_DIRS.split(":"):
+            if os.path.exists(iPath):
+                self.list_GIG.addItem(iPath)
+
+        for iPath in EXTRA_SF2_DIRS.split(":"):
+            if os.path.exists(iPath):
+                self.list_SF2.addItem(iPath)
+
+        for iPath in EXTRA_SFZ_DIRS.split(":"):
+            if os.path.exists(iPath):
+                self.list_SFZ.addItem(iPath)
+
         self.list_LADSPA.sortItems(Qt.AscendingOrder)
         self.list_DSSI.sortItems(Qt.AscendingOrder)
         self.list_LV2.sortItems(Qt.AscendingOrder)
         self.list_VST.sortItems(Qt.AscendingOrder)
+        self.list_VST3.sortItems(Qt.AscendingOrder)
+        self.list_GIG.sortItems(Qt.AscendingOrder)
+        self.list_SF2.sortItems(Qt.AscendingOrder)
+        self.list_SFZ.sortItems(Qt.AscendingOrder)
 
         self.list_LADSPA.setCurrentRow(0)
         self.list_DSSI.setCurrentRow(0)
         self.list_LV2.setCurrentRow(0)
         self.list_VST.setCurrentRow(0)
+        self.list_VST3.setCurrentRow(0)
+        self.list_GIG.setCurrentRow(0)
+        self.list_SF2.setCurrentRow(0)
+        self.list_SFZ.setCurrentRow(0)
 
         # -------------------------------------------------------------
         # Set-up GUI (Tweaks, Default Applications)
@@ -1814,6 +1854,10 @@ class CadenceMainW(QMainWindow, ui_cadence.Ui_CadenceMainW):
             EXTRA_DSSI_DIRS = []
             EXTRA_LV2_DIRS = []
             EXTRA_VST_DIRS = []
+            EXTRA_VST3_DIRS = []
+            EXTRA_GIG_DIRS = []
+            EXTRA_SF2_DIRS = []
+            EXTRA_SFZ_DIRS = []
 
             for i in range(self.list_LADSPA.count()):
                 iPath = self.list_LADSPA.item(i).text()
@@ -1835,10 +1879,34 @@ class CadenceMainW(QMainWindow, ui_cadence.Ui_CadenceMainW):
                 if iPath not in DEFAULT_VST_PATH and iPath not in EXTRA_VST_DIRS:
                     EXTRA_VST_DIRS.append(iPath)
 
+            for i in range(self.list_VST3.count()):
+                iPath = self.list_VST3.item(i).text()
+                if iPath not in DEFAULT_VST3_PATH and iPath not in EXTRA_VST3_DIRS:
+                    EXTRA_VST3_DIRS.append(iPath)
+
+            for i in range(self.list_GIG.count()):
+                iPath = self.list_GIG.item(i).text()
+                if iPath not in DEFAULT_GIG_PATH and iPath not in EXTRA_GIG_DIRS:
+                    EXTRA_GIG_DIRS.append(iPath)
+
+            for i in range(self.list_SF2.count()):
+                iPath = self.list_SF2.item(i).text()
+                if iPath not in DEFAULT_SF2_PATH and iPath not in EXTRA_SF2_DIRS:
+                    EXTRA_SF2_DIRS.append(iPath)
+
+            for i in range(self.list_SFZ.count()):
+                iPath = self.list_SFZ.item(i).text()
+                if iPath not in DEFAULT_SFZ_PATH and iPath not in EXTRA_SFZ_DIRS:
+                    EXTRA_SFZ_DIRS.append(iPath)
+
             GlobalSettings.setValue("AudioPlugins/EXTRA_LADSPA_PATH", ":".join(EXTRA_LADSPA_DIRS))
             GlobalSettings.setValue("AudioPlugins/EXTRA_DSSI_PATH", ":".join(EXTRA_DSSI_DIRS))
             GlobalSettings.setValue("AudioPlugins/EXTRA_LV2_PATH", ":".join(EXTRA_LV2_DIRS))
             GlobalSettings.setValue("AudioPlugins/EXTRA_VST_PATH", ":".join(EXTRA_VST_DIRS))
+            GlobalSettings.setValue("AudioPlugins/EXTRA_VST3_PATH", ":".join(EXTRA_VST3_DIRS))
+            GlobalSettings.setValue("AudioPlugins/EXTRA_GIG_PATH", ":".join(EXTRA_GIG_DIRS))
+            GlobalSettings.setValue("AudioPlugins/EXTRA_SF2_PATH", ":".join(EXTRA_SF2_DIRS))
+            GlobalSettings.setValue("AudioPlugins/EXTRA_SFZ_PATH", ":".join(EXTRA_SFZ_DIRS))
 
         if "apps" in self.settings_changed_types:
             mimeFileContent = ""
@@ -2132,6 +2200,14 @@ class CadenceMainW(QMainWindow, ui_cadence.Ui_CadenceMainW):
             self.list_LV2.addItem(newPath)
         elif self.tb_tweak_plugins.currentIndex() == 3:
             self.list_VST.addItem(newPath)
+        elif self.tb_tweak_plugins.currentIndex() == 4:
+            self.list_VST3.addItem(newPath)
+        elif self.tb_tweak_plugins.currentIndex() == 5:
+            self.list_GIG.addItem(newPath)
+        elif self.tb_tweak_plugins.currentIndex() == 6:
+            self.list_SF2.addItem(newPath)
+        elif self.tb_tweak_plugins.currentIndex() == 7:
+            self.list_SFZ.addItem(newPath)
 
         self.func_settings_changed("plugins")
 
@@ -2145,6 +2221,14 @@ class CadenceMainW(QMainWindow, ui_cadence.Ui_CadenceMainW):
             curPath = self.list_LV2.item(self.list_LV2.currentRow()).text()
         elif self.tb_tweak_plugins.currentIndex() == 3:
             curPath = self.list_VST.item(self.list_VST.currentRow()).text()
+        elif self.tb_tweak_plugins.currentIndex() == 4:
+            curPath = self.list_VST3.item(self.list_VST3.currentRow()).text()
+        elif self.tb_tweak_plugins.currentIndex() == 5:
+            curPath = self.list_GIG.item(self.list_GIG.currentRow()).text()
+        elif self.tb_tweak_plugins.currentIndex() == 6:
+            curPath = self.list_SF2.item(self.list_SF2.currentRow()).text()
+        elif self.tb_tweak_plugins.currentIndex() == 7:
+            curPath = self.list_SFZ.item(self.list_SFZ.currentRow()).text()
         else:
             curPath = ""
 
@@ -2161,6 +2245,14 @@ class CadenceMainW(QMainWindow, ui_cadence.Ui_CadenceMainW):
             self.list_LV2.item(self.list_LV2.currentRow()).setText(newPath)
         elif self.tb_tweak_plugins.currentIndex() == 3:
             self.list_VST.item(self.list_VST.currentRow()).setText(newPath)
+        elif self.tb_tweak_plugins.currentIndex() == 4:
+            self.list_VST3.item(self.list_VST3.currentRow()).setText(newPath)
+        elif self.tb_tweak_plugins.currentIndex() == 5:
+            self.list_GIG.item(self.list_GIG.currentRow()).setText(newPath)
+        elif self.tb_tweak_plugins.currentIndex() == 6:
+            self.list_SF2.item(self.list_SF2.currentRow()).setText(newPath)
+        elif self.tb_tweak_plugins.currentIndex() == 7:
+            self.list_SFZ.item(self.list_SFZ.currentRow()).setText(newPath)
 
         self.func_settings_changed("plugins")
 
@@ -2174,6 +2266,14 @@ class CadenceMainW(QMainWindow, ui_cadence.Ui_CadenceMainW):
             self.list_LV2.takeItem(self.list_LV2.currentRow())
         elif self.tb_tweak_plugins.currentIndex() == 3:
             self.list_VST.takeItem(self.list_VST.currentRow())
+        elif self.tb_tweak_plugins.currentIndex() == 4:
+            self.list_VST3.takeItem(self.list_VST3.currentRow())
+        elif self.tb_tweak_plugins.currentIndex() == 5:
+            self.list_GIG.takeItem(self.list_GIG.currentRow())
+        elif self.tb_tweak_plugins.currentIndex() == 6:
+            self.list_SF2.takeItem(self.list_SF2.currentRow())
+        elif self.tb_tweak_plugins.currentIndex() == 7:
+            self.list_SFZ.takeItem(self.list_SFZ.currentRow())
 
         self.func_settings_changed("plugins")
 
@@ -2203,6 +2303,30 @@ class CadenceMainW(QMainWindow, ui_cadence.Ui_CadenceMainW):
             for iPath in DEFAULT_VST_PATH:
                 self.list_VST.addItem(iPath)
 
+        elif self.tb_tweak_plugins.currentIndex() == 4:
+            self.list_VST3.clear()
+
+            for iPath in DEFAULT_VST3_PATH:
+                self.list_VST3.addItem(iPath)
+
+        elif self.tb_tweak_plugins.currentIndex() == 5:
+            self.list_GIG.clear()
+
+            for iPath in DEFAULT_GIG_PATH:
+                self.list_GIG.addItem(iPath)
+
+        elif self.tb_tweak_plugins.currentIndex() == 6:
+            self.list_SF2.clear()
+
+            for iPath in DEFAULT_SF2_PATH:
+                self.list_SF2.addItem(iPath)
+
+        elif self.tb_tweak_plugins.currentIndex() == 7:
+            self.list_SFZ.clear()
+
+            for iPath in DEFAULT_SFZ_PATH:
+                self.list_SFZ.addItem(iPath)
+
         self.func_settings_changed("plugins")
 
     @pyqtSlot(int)
@@ -2220,6 +2344,18 @@ class CadenceMainW(QMainWindow, ui_cadence.Ui_CadenceMainW):
         elif index == 3:
             self.list_VST.setCurrentRow(-1)
             self.list_VST.setCurrentRow(0)
+        elif index == 4:
+            self.list_VST3.setCurrentRow(-1)
+            self.list_VST3.setCurrentRow(0)
+        elif index == 5:
+            self.list_GIG.setCurrentRow(-1)
+            self.list_GIG.setCurrentRow(0)
+        elif index == 6:
+            self.list_SF2.setCurrentRow(-1)
+            self.list_SF2.setCurrentRow(0)
+        elif index == 7:
+            self.list_SFZ.setCurrentRow(-1)
+            self.list_SFZ.setCurrentRow(0)
 
     @pyqtSlot(int)
     def slot_tweakPluginsLadspaRowChanged(self, index):
@@ -2242,6 +2378,30 @@ class CadenceMainW(QMainWindow, ui_cadence.Ui_CadenceMainW):
     @pyqtSlot(int)
     def slot_tweakPluginsVstRowChanged(self, index):
         nonRemovable = (index >= 0 and self.list_VST.item(index).text() not in DEFAULT_VST_PATH)
+        self.b_tweak_plugins_change.setEnabled(nonRemovable)
+        self.b_tweak_plugins_remove.setEnabled(nonRemovable)
+
+    @pyqtSlot(int)
+    def slot_tweakPluginsVstRowChanged(self, index):
+        nonRemovable = (index >= 0 and self.list_VST3.item(index).text() not in DEFAULT_VST3_PATH)
+        self.b_tweak_plugins_change.setEnabled(nonRemovable)
+        self.b_tweak_plugins_remove.setEnabled(nonRemovable)
+
+    @pyqtSlot(int)
+    def slot_tweakPluginsVstRowChanged(self, index):
+        nonRemovable = (index >= 0 and self.list_GIG.item(index).text() not in DEFAULT_GIG_PATH)
+        self.b_tweak_plugins_change.setEnabled(nonRemovable)
+        self.b_tweak_plugins_remove.setEnabled(nonRemovable)
+
+    @pyqtSlot(int)
+    def slot_tweakPluginsVstRowChanged(self, index):
+        nonRemovable = (index >= 0 and self.list_SF2.item(index).text() not in DEFAULT_SF2_PATH)
+        self.b_tweak_plugins_change.setEnabled(nonRemovable)
+        self.b_tweak_plugins_remove.setEnabled(nonRemovable)
+
+    @pyqtSlot(int)
+    def slot_tweakPluginsVstRowChanged(self, index):
+        nonRemovable = (index >= 0 and self.list_SFZ.item(index).text() not in DEFAULT_SFZ_PATH)
         self.b_tweak_plugins_change.setEnabled(nonRemovable)
         self.b_tweak_plugins_remove.setEnabled(nonRemovable)
 

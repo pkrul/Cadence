@@ -28,7 +28,7 @@ from time import sleep
 from shared import *
 
 # ------------------------------------------------------------------------------------------------------------
-# Default Plugin PATHs
+# Default Plugin, Sample, and Soundfont PATHs
 
 if ENV_LADSPA_PATH is None:
     DEFAULT_LADSPA_PATH = [
@@ -65,6 +65,42 @@ if ENV_VST_PATH is None:
     ]
 else:
     DEFAULT_VST_PATH = ENV_VST_PATH
+    
+if ENV_VST3_PATH is None:
+    DEFAULT_VST3_PATH = [
+        os.path.join(HOME, ".vst3"),
+        os.path.join("/", "usr", "lib", "vst3"),
+        os.path.join("/", "usr", "local", "lib", "vst3")
+    ]
+else:
+    DEFAULT_VST3_PATH = ENV_VST3_PATH
+    
+if ENV_GIG_PATH is None:
+    DEFAULT_GIG_PATH = [
+        os.path.join(HOME, ".sounds", "gig"),
+        os.path.join("/", "usr", "share", "sounds", "gig"),
+        os.path.join("/", "usr", "local", "share", "sounds", "gig")
+    ]
+else:
+    DEFAULT_GIG_PATH = ENV_GIG_PATH
+    
+if ENV_SF2_PATH is None:
+    DEFAULT_SF2_PATH = [
+        os.path.join(HOME, ".sounds", "sf2"),
+        os.path.join("/", "usr", "share", "sounds", "sf2"),
+        os.path.join("/", "usr", "local", "share", "sounds", "sf2")
+    ]
+else:
+    DEFAULT_SF2_PATH = ENV_SF2_PATH
+    
+if ENV_SFZ_PATH is None:
+    DEFAULT_SFZ_PATH = [
+        os.path.join(HOME, ".sounds", "sfz"),
+        os.path.join("/", "usr", "share", "sounds", "sfz"),
+        os.path.join("/", "usr", "local", "share", "sounds", "sfz")
+    ]
+else:
+    DEFAULT_SFZ_PATH = ENV_SFZ_PATH
 
 # ------------------------------------------------------------------------------------------------------------
 # ALSA file-type indexes

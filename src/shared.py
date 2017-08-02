@@ -23,7 +23,7 @@ import os
 import sys
 from codecs import open as codecopen
 from unicodedata import normalize
-from PyQt4.QtCore import qWarning, SIGNAL, SLOT, qDir
+from PyQt4.QtCore import qWarning, SIGNAL, SLOT, QDir
 from PyQt4.QtGui import QApplication, QFileDialog, QIcon, QMessageBox
 
 # ------------------------------------------------------------------------------------------------------------
@@ -176,6 +176,46 @@ if ENV_VST_PATH is None:
     qWarning("VST_PATH not set, using default.")
 else:
     ENV_VST_PATH = ENV_VST_PATH.split(os.pathsep)
+
+# ------------------------------------------------------------------------------------------------------------
+# User environment VST3 plugin paths
+
+ENV_VST3_PATH = os.getenv("VST3_PATH")
+
+if ENV_VST3_PATH is None:
+    qWarning("VST3_PATH not set, using default.")
+else:
+    ENV_VST3_PATH = ENV_VST3_PATH.split(os.pathsep)
+
+# ------------------------------------------------------------------------------------------------------------
+# User environment GIG sample paths
+
+ENV_GIG_PATH = os.getenv("GIG_PATH")
+
+if ENV_GIG_PATH is None:
+    qWarning("GIG_PATH not set, using default.")
+else:
+    ENV_GIG_PATH = ENV_GIG_PATH.split(os.pathsep)
+
+# ------------------------------------------------------------------------------------------------------------
+# User environment SF2 soundfont paths
+
+ENV_SF2_PATH = os.getenv("SF2_PATH")
+
+if ENV_SF2_PATH is None:
+    qWarning("SF2_PATH not set, using default.")
+else:
+    ENV_SF2_PATH = ENV_SF2_PATH.split(os.pathsep)
+
+# ------------------------------------------------------------------------------------------------------------
+# User environment SFZ soundfont paths
+
+ENV_SFZ_PATH = os.getenv("SFZ_PATH")
+
+if ENV_SFZ_PATH is None:
+    qWarning("SFZ_PATH not set, using default.")
+else:
+    ENV_SFZ_PATH = ENV_SFZ_PATH.split(os.pathsep)
 
 # ------------------------------------------------------------------------------------------------------------
 # Remove/convert non-ascii chars from a string

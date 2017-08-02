@@ -186,12 +186,68 @@ def printVST_PATH():
 
     print(VST_PATH_str)
 
+def printVST3_PATH():
+    EXTRA_VST3_DIRS = GlobalSettings.value("AudioPlugins/EXTRA_VST3_PATH", "", type=str).split(":")
+    VST3_PATH_str   = ":".join(DEFAULT_VST3_PATH)
+
+    for i in range(len(EXTRA_VST3_DIRS)):
+      if EXTRA_VST3_DIRS[i]:
+        VST3_PATH_str += ":"+EXTRA_VST3_DIRS[i]
+
+    print(VST3_PATH_str)
+
+def printGIG_PATH():
+    EXTRA_GIG_DIRS = GlobalSettings.value("AudioPlugins/EXTRA_GIG_PATH", "", type=str).split(":")
+    GIG_PATH_str   = ":".join(DEFAULT_GIG_PATH)
+
+    for i in range(len(EXTRA_GIG_DIRS)):
+      if EXTRA_GIG_DIRS[i]:
+        GIG_PATH_str += ":"+EXTRA_GIG_DIRS[i]
+
+    print(GIG_PATH_str)
+
+def printSF2_PATH():
+    EXTRA_SF2_DIRS = GlobalSettings.value("AudioPlugins/EXTRA_SF2_PATH", "", type=str).split(":")
+    SF2_PATH_str   = ":".join(DEFAULT_SF2_PATH)
+
+    for i in range(len(EXTRA_SF2_DIRS)):
+      if EXTRA_SF2_DIRS[i]:
+        SF2_PATH_str += ":"+EXTRA_SF2_DIRS[i]
+
+    print(SF2_PATH_str)
+
+def printSFZ_PATH():
+    EXTRA_SFZ_DIRS = GlobalSettings.value("AudioPlugins/EXTRA_SFZ_PATH", "", type=str).split(":")
+    SFZ_PATH_str   = ":".join(DEFAULT_SFZ_PATH)
+
+    for i in range(len(EXTRA_SFZ_DIRS)):
+      if EXTRA_SFZ_DIRS[i]:
+        SFZ_PATH_str += ":"+EXTRA_SFZ_DIRS[i]
+
+    print(SFZ_PATH_str)
+
 def printArguments():
-    print("\t-s|--start  \tStart session")
-    print("\t   --reset  \tForce-reset all JACK daemons and settings (disables auto-start at login)")
+    print(" -s, --start           \tUsed when started from user's desktop menu")
+    print(" --reset, --force-reset\tForce-reset all JACK daemons and settings")
+    print("                       \t(including removal of auto-start at login)")
     print("")
-    print("\t-h|--help   \tShow this help message")
-    print("\t-v|--version\tShow version")
+    print(" -h, --help            \tShow this help message")
+    print(" -v, --version         \tShow version")
+    print("")
+    print("Options for system services:")
+    print(" --system-start        \tUsed for auto-start by graphical display manager,")
+    print("                       \thandling of D-Bus, a2jmidi, JACK, Ladish, etc.\n")
+    print(" --system-start-desktop\tUsed for auto-start by X-Desktop session manager,")
+    print("                       \thandling of a2jmidi, JACK, Ladish, etc.")
+    print("\nOptions for applications, etc.:")
+    print(" --printLADSPA_PATH    \tPrints value of LADSPA_PATH, to find LADSPA plugins")
+    print(" --printDSSI_PATH      \tPrints value of DSSI_PATH, to find DSSI plugins")
+    print(" --printLV2_PATH       \tPrints value of LV2_PATH, to find LV2 plugins")
+    print(" --printVST_PATH       \tPrints value of VST_PATH, to find VST plugins")
+    print(" --printVST3_PATH      \tPrints value of VST3_PATH, to find VST3 plugins")
+    print(" --printGIG_PATH       \tPrints value of GIG_PATH, to find GIG samples")
+    print(" --printSF2_PATH       \tPrints value of SF2_PATH, to find SF2 soundfonts")
+    print(" --printSFZ_PATH       \tPrints value of SFZ_PATH, to find SFZ soundfonts")
 
 def printError(cmd):
     print("Invalid arguments")
@@ -227,6 +283,14 @@ if __name__ == '__main__':
         elif arg == "--printLV2_PATH":
             printLV2_PATH()
         elif arg == "--printVST_PATH":
+            printVST_PATH()
+        elif arg == "--printVST3_PATH":
+            printVST3_PATH()
+        elif arg == "--printGIG_PATH":
+            printSF2_PATH()
+        elif arg == "--printSF2_PATH":
+            printSFZ_PATH()
+        elif arg == "--printSFZ_PATH":
             printVST_PATH()
         elif arg == "--reset":
             forceReset()
