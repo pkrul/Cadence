@@ -245,7 +245,7 @@
                </widget>
               </item>
               <item row="4" column="0">
-               <widget class="QLabel" name="label_10">
+               <widget class="QLabel" name="label_vst3">
                 <property name="text">
                  <string>VST3:</string>
                 </property>
@@ -254,8 +254,15 @@
                 </property>
                </widget>
               </item>
+              <item row="4" column="1" colspan="2">
+               <widget class="QLabel" name="ico_vst3_daw">
+                <property name="text">
+                 <string>ico</string>
+                </property>
+               </widget>
+              </item>
               <item row="5" column="0">
-               <widget class="QLabel" name="label_11">
+               <widget class="QLabel" name="label_gig">
                 <property name="text">
                  <string>GIG:</string>
                 </property>
@@ -264,8 +271,15 @@
                 </property>
                </widget>
               </item>
+              <item row="5" column="1" colspan="2">
+               <widget class="QLabel" name="ico_gig_daw">
+                <property name="text">
+                 <string>ico</string>
+                </property>
+               </widget>
+              </item>
               <item row="6" column="0">
-               <widget class="QLabel" name="label_12">
+               <widget class="QLabel" name="label_sf2">
                 <property name="text">
                  <string>SF2:</string>
                 </property>
@@ -274,13 +288,27 @@
                 </property>
                </widget>
               </item>
+              <item row="6" column="1" colspan="2">
+               <widget class="QLabel" name="ico_sf2_daw">
+                <property name="text">
+                 <string>ico</string>
+                </property>
+               </widget>
+              </item>
               <item row="7" column="0">
-               <widget class="QLabel" name="label_13">
+               <widget class="QLabel" name="label_sfz">
                 <property name="text">
                  <string>SFZ:</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="1" colspan="2">
+               <widget class="QLabel" name="ico_sfz_daw">
+                <property name="text">
+                 <string>ico</string>
                 </property>
                </widget>
               </item>
@@ -580,7 +608,7 @@
              </property>
              <layout class="QGridLayout" name="gridLayout_6">
               <item row="1" column="0">
-               <widget class="QLabel" name="label_11">
+               <widget class="QLabel" name="label_ladspa_host">
                 <property name="text">
                  <string>LADSPA:</string>
                 </property>
@@ -597,7 +625,7 @@
                </widget>
               </item>
               <item row="2" column="0">
-               <widget class="QLabel" name="label_14">
+               <widget class="QLabel" name="label_dssi_host">
                 <property name="text">
                  <string>DSSI:</string>
                 </property>
@@ -614,7 +642,7 @@
                </widget>
               </item>
               <item row="3" column="0">
-               <widget class="QLabel" name="label_15">
+               <widget class="QLabel" name="label_lv2_host">
                 <property name="text">
                  <string>LV2:</string>
                 </property>
@@ -631,7 +659,7 @@
                </widget>
               </item>
               <item row="4" column="0">
-               <widget class="QLabel" name="label_16">
+               <widget class="QLabel" name="label_vst_host">
                 <property name="text">
                  <string>VST:</string>
                 </property>
@@ -657,6 +685,74 @@
                <widget class="QLabel" name="label_vst_mode_host">
                 <property name="text">
                  <string>mode</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0">
+               <widget class="QLabel" name="label_vst3_host">
+                <property name="text">
+                 <string>VST3:</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1" colspan="2">
+               <widget class="QLabel" name="ico_vst3_host">
+                <property name="text">
+                 <string>ico</string>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="0">
+               <widget class="QLabel" name="label_gig_host">
+                <property name="text">
+                 <string>GIG:</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="1" colspan="2">
+               <widget class="QLabel" name="ico_gig_host">
+                <property name="text">
+                 <string>ico</string>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="0">
+               <widget class="QLabel" name="label_sf2_host">
+                <property name="text">
+                 <string>SF2:</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="1" colspan="2">
+               <widget class="QLabel" name="ico_sf2_host">
+                <property name="text">
+                 <string>ico</string>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="0">
+               <widget class="QLabel" name="label_sfz_host">
+                <property name="text">
+                 <string>SFZ:</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="8" column="1" colspan="2">
+               <widget class="QLabel" name="ico_sfz_host">
+                <property name="text">
+                 <string>ico</string>
                 </property>
                </widget>
               </item>

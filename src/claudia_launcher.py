@@ -64,6 +64,9 @@ iTabEffect     = 5
 iTabTool       = 6
 
 EXTRA_ICON_PATHS = [
+    "/usr/share/claudia",
+    "/usr/share/claudia/icons",
+    "/usr/share/claudia/icons/claudia-hicolor",
     "/usr/share/icons",
     "/usr/share/pixmaps",
     "/usr/local/share/pixmaps"
@@ -162,7 +165,7 @@ class ClaudiaLauncher(QWidget, ui_claudia_launcher.Ui_ClaudiaLauncherW):
 
         self.clearInfo_DAW()
         self.clearInfo_Host()
-        self.clearInfo_Intrument()
+        self.clearInfo_Instrument()
         self.clearInfo_Bristol()
         self.clearInfo_Plugin()
         self.clearInfo_Effect()
@@ -517,6 +520,10 @@ class ClaudiaLauncher(QWidget, ui_claudia_launcher.Ui_ClaudiaLauncherW):
         self.ico_dssi_daw.setPixmap(self.getIconForYesNo(False).pixmap(16, 16))
         self.ico_lv2_daw.setPixmap(self.getIconForYesNo(False).pixmap(16, 16))
         self.ico_vst_daw.setPixmap(self.getIconForYesNo(False).pixmap(16, 16))
+        self.ico_vst3_daw.setPixmap(self.getIconForYesNo(False).pixmap(16, 16))
+        self.ico_gig_daw.setPixmap(self.getIconForYesNo(False).pixmap(16, 16))
+        self.ico_sf2_daw.setPixmap(self.getIconForYesNo(False).pixmap(16, 16))
+        self.ico_sfz_daw.setPixmap(self.getIconForYesNo(False).pixmap(16, 16))
         self.label_vst_mode_daw.setText("")
         self.ico_jack_transport_daw.setPixmap(self.getIconForYesNo(False).pixmap(16, 16))
         self.label_midi_mode_daw.setText("---")
@@ -531,13 +538,17 @@ class ClaudiaLauncher(QWidget, ui_claudia_launcher.Ui_ClaudiaLauncherW):
         self.ico_dssi_host.setPixmap(self.getIconForYesNo(False).pixmap(16, 16))
         self.ico_lv2_host.setPixmap(self.getIconForYesNo(False).pixmap(16, 16))
         self.ico_vst_host.setPixmap(self.getIconForYesNo(False).pixmap(16, 16))
+        self.ico_vst3_host.setPixmap(self.getIconForYesNo(False).pixmap(16, 16))
+        self.ico_gig_host.setPixmap(self.getIconForYesNo(False).pixmap(16, 16))
+        self.ico_sf2_host.setPixmap(self.getIconForYesNo(False).pixmap(16, 16))
+        self.ico_sfz_host.setPixmap(self.getIconForYesNo(False).pixmap(16, 16))
         self.label_vst_mode_host.setText("")
         self.label_midi_mode_host.setText("---")
         self.label_session_level_host.setText(database.LEVEL_0)
         self.frame_Host.setEnabled(False)
         self.showDoc_Host("", "")
 
-    def clearInfo_Intrument(self):
+    def clearInfo_Instrument(self):
         self.ico_app_ins.setPixmap(self.getIcon("start-here").pixmap(48, 48))
         self.label_name_ins.setText("App Name")
         self.ico_builtin_fx_ins.setPixmap(self.getIconForYesNo(False).pixmap(16, 16))
@@ -911,6 +922,10 @@ class ClaudiaLauncher(QWidget, ui_claudia_launcher.Ui_ClaudiaLauncherW):
             self.ico_dssi_daw.setPixmap(QIcon(self.getIconForYesNo(Features[1])).pixmap(16, 16))
             self.ico_lv2_daw.setPixmap(QIcon(self.getIconForYesNo(Features[2])).pixmap(16, 16))
             self.ico_vst_daw.setPixmap(QIcon(self.getIconForYesNo(Features[3])).pixmap(16, 16))
+            self.ico_vst3_daw.setPixmap(QIcon(self.getIconForYesNo(Features[5])).pixmap(16, 16))
+            self.ico_gig_daw.setPixmap(QIcon(self.getIconForYesNo(Features[7])).pixmap(16, 16))
+            self.ico_sf2_daw.setPixmap(QIcon(self.getIconForYesNo(Features[9])).pixmap(16, 16))
+            self.ico_sfz_daw.setPixmap(QIcon(self.getIconForYesNo(Features[11])).pixmap(16, 16))
             self.ico_jack_transport_daw.setPixmap(QIcon(self.getIconForYesNo(Features[5])).pixmap(16, 16))
             self.label_name_daw.setText(AppName)
             self.label_vst_mode_daw.setText(Features[4])
@@ -938,6 +953,10 @@ class ClaudiaLauncher(QWidget, ui_claudia_launcher.Ui_ClaudiaLauncherW):
             self.ico_dssi_host.setPixmap(self.getIconForYesNo(Features[2]).pixmap(16, 16))
             self.ico_lv2_host.setPixmap(self.getIconForYesNo(Features[3]).pixmap(16, 16))
             self.ico_vst_host.setPixmap(self.getIconForYesNo(Features[4]).pixmap(16, 16))
+            self.ico_vst3_host.setPixmap(self.getIconForYesNo(Features[7]).pixmap(16, 16))
+            self.ico_gig_host.setPixmap(self.getIconForYesNo(Features[8]).pixmap(16, 16))
+            self.ico_sf2_host.setPixmap(self.getIconForYesNo(Features[9]).pixmap(16, 16))
+            self.ico_sfz_host.setPixmap(self.getIconForYesNo(Features[10]).pixmap(16, 16))
             self.label_name_host.setText(AppName)
             self.label_vst_mode_host.setText(Features[5])
             self.label_midi_mode_host.setText(Features[6])
@@ -967,7 +986,7 @@ class ClaudiaLauncher(QWidget, ui_claudia_launcher.Ui_ClaudiaLauncherW):
             Docs0 = Docs[0] if (os.path.exists(Docs[0].replace("file://", ""))) else ""
             self.showDoc_Instrument(Docs0, Docs[1])
         else:
-            self.clearInfo_Intrument()
+            self.clearInfo_Instrument()
 
         self.callback_checkGUI(row >= 0)
 

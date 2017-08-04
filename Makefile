@@ -120,8 +120,8 @@ install:
 		$(DESTDIR)$(PREFIX)/bin/
 
 	# Install desktop files
-	install -m 644 data/autostart/*.desktop $(DESTDIR)/etc/xdg/autostart/
-	install -m 644 data/*.desktop           $(DESTDIR)$(PREFIX)/share/applications/
+	install -m 644 data/autostart/*.desktop                $(DESTDIR)/etc/xdg/autostart/
+	install -m 644 data/*.desktop                          $(DESTDIR)$(PREFIX)/share/applications/
 
 	# Install icons, 16x16
 	install -m 644 resources/16x16/cadence.png             $(DESTDIR)$(PREFIX)/share/icons/hicolor/16x16/apps/
@@ -159,16 +159,17 @@ install:
 	install -m 644 resources/scalable/claudia-launcher.svg $(DESTDIR)$(PREFIX)/share/icons/hicolor/scalable/apps/
 
 	# Install main code
-	install -m 755 src/*.py $(DESTDIR)$(PREFIX)/share/cadence/src/
+	install -m 755 src/*.py                                $(DESTDIR)$(PREFIX)/share/cadence/src/
 
-	# Install addtional stuff for Cadence
-	install -m 644 data/pulse2jack/*     $(DESTDIR)$(PREFIX)/share/cadence/pulse2jack/
-	install -m 644 data/pulse2loopback/* $(DESTDIR)$(PREFIX)/share/cadence/pulse2loopback/
-	install -m 755 data/61cadence-session-inject $(X11_RC_DIR)
+	# Install additional stuff for Cadence
+	install -m 644 data/pulse2jack/*                       $(DESTDIR)$(PREFIX)/share/cadence/pulse2jack/
+	install -m 644 data/pulse2loopback/*                   $(DESTDIR)$(PREFIX)/share/cadence/pulse2loopback/
+	install -m 755 data/61cadence-session-inject           $(X11_RC_DIR)
 
 	# Install addtional stuff for Claudia
-	cp -r data/icons/*     $(DESTDIR)$(PREFIX)/share/cadence/icons/
-	cp -r data/templates/* $(DESTDIR)$(PREFIX)/share/cadence/templates/
+	cp -r resources/16x16/*-*.png                          $(DESTDIR)$(PREFIX)/share/cadence/icons/claudia-hicolor/16x16
+	cp -r data/icons/*                                     $(DESTDIR)$(PREFIX)/share/cadence/icons/
+	cp -r data/templates/*                                 $(DESTDIR)$(PREFIX)/share/cadence/templates/
 
 	# Adjust PREFIX value in script files
 	sed -i "s?X-PREFIX-X?$(PREFIX)?" \
@@ -216,8 +217,10 @@ uninstall:
 	rm -f $(DESTDIR)/etc/xdg/autostart/cadence-session-start.desktop
 	rm -f $(X11_RC_DIR)/61cadence-session-inject
 	rm -rf $(DESTDIR)$(PREFIX)/share/cadence/
+	rm -rf $(DESTDIR)$(PREFIX)/share/claudia/
 
 	# Old stuff
 	rm -f $(X11_RC_DIR)/21cadence-session-inject
 	rm -f $(X11_RC_DIR)/70cadence-plugin-paths
 	rm -f $(X11_RC_DIR)/99cadence-session-start
+
