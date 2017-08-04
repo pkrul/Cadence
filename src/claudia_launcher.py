@@ -64,9 +64,9 @@ iTabEffect     = 5
 iTabTool       = 6
 
 EXTRA_ICON_PATHS = [
-    "/usr/share/claudia",
-    "/usr/share/claudia/icons",
-    "/usr/share/claudia/icons/claudia-hicolor",
+    "/usr/share/cadence",
+    "/usr/share/cadence/icons",
+    "/usr/share/cadence/icons/claudia-hicolor",
     "/usr/share/icons",
     "/usr/share/pixmaps",
     "/usr/local/share/pixmaps"
